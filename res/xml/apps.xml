@@ -68,6 +68,16 @@
     </Preference>
 
     <Preference
+        android:key="parallel_space"
+        android:title="@string/laboratory_parallel_space_title"
+        android:summary="@string/laboratory_parallel_space_summary"
+        android:order="-994">
+        <intent
+            android:targetPackage="ink.kscope.parallelspace"
+            android:targetClass="ink.kscope.parallelspace.MainActivity" />
+    </Preference>
+
+    <Preference
         android:key="game_settings"
         android:title="@string/game_space_title"
         android:summary="@string/game_space_summary"
