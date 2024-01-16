@@ -51,16 +51,9 @@ public class DefaultRingtonePreference extends RingtonePreference {
             return;
         }
 
-        String mimeType = mUserContext.getContentResolver().getType(ringtoneUri);
-        if (mimeType == null) {
+        if (!isValidRingtoneUri(ringtoneUri)) {
             Log.e(TAG, "onSaveRingtone for URI:" + ringtoneUri
-                    + " ignored: failure to find mimeType (no access from this context?)");
-            return;
-        }
-
-        if (!(mimeType.startsWith("audio/") || mimeType.equals("application/ogg"))) {
-            Log.e(TAG, "onSaveRingtone for URI:" + ringtoneUri
-                    + " ignored: associated mimeType:" + mimeType + " is not an audio type");
+                    + " ignored: invalid ringtone Uri");
             return;
         }
 
@@ -69,12 +62,14 @@ public class DefaultRingtonePreference extends RingtonePreference {
 
     @VisibleForTesting
     void setActualDefaultRingtoneUri(Uri ringtoneUri) {
-        RingtoneManager.setActualDefaultRingtoneUri(mUserContext, getRingtoneType(), ringtoneUri);
+        RingtoneManager.setActualDefaultRingtoneUriBySlot(mUserContext, getRingtoneType(),
+                ringtoneUri, getSlotId());
     }
 
     @Override
     protected Uri onRestoreRingtone() {
-        return RingtoneManager.getActualDefaultRingtoneUri(mUserContext, getRingtoneType());
+        return RingtoneManager.getActualDefaultRingtoneUriBySlot(mUserContext, getRingtoneType(),
+                getSlotId());
     }
 
 }
