@@ -58,8 +58,6 @@
         <item>@string/status_bar_battery_style_filled_circle</item>
         <item>@string/status_bar_battery_style_text</item>
         <item>@string/status_bar_battery_style_hidden</item>
-        <item>@string/status_bar_battery_style_icon_landscape_ios15</item>
-        <item>@string/status_bar_battery_style_icon_landscape_ios16</item>
     </string-array>
 
     <string-array name="status_bar_battery_style_values" translatable="false">
@@ -69,8 +67,6 @@
         <item>3</item>
         <item>4</item>
         <item>5</item>
-        <item>6</item>
-        <item>7</item>
     </string-array>
 
     <!-- Bluetooth settings.  The delay in inactivity before bluetooth is turned off. These are shown in a list dialog. -->
